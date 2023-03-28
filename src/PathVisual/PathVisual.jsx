@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Node from './Grid/Grid';
-import {dijkstra, getNodesInShortestPathOrder} from '../Algorithms/Dijkstra.js';
+import {dijkstra} from '../Algorithms/Dijkstra.js';
+import {dfs} from '../Algorithms/DFS.js';
+import {bfs} from '../Algorithms/BFS.js';
+import {getNodesInShortestPathOrder} from '../Algorithms/Helper.js';
 
 import './PathVisual.css';
 
@@ -78,7 +81,7 @@ export default class PathfindingVisualizer extends Component {
     const {grid} = this.state;
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
-    const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    const visitedNodesInOrder = dfs(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
@@ -88,7 +91,7 @@ export default class PathfindingVisualizer extends Component {
     const {grid} = this.state;
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
-    const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    const visitedNodesInOrder = bfs(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
