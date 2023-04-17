@@ -132,6 +132,9 @@ export default class PathfindingVisualizer extends Component {
         <button onClick={() => this.visualizeDFS()}>
           Visualize Breadth First Search Algorithm
         </button>
+        <button onClick={() => this.visualizeDFS()}>
+          Visualize A* Search Algorithm
+        </button>
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
