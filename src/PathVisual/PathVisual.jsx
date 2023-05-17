@@ -33,9 +33,12 @@ export default class PathfindingVisualizer extends Component {
 
   handleMouseEnter(row, col) {
     if (!this.state.mouseIsPressed) return;
+    const node = this.state.grid[row][col];
+    if (node.isStart || node.isFinish) return;
     const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
     this.setState({grid: newGrid});
   }
+  
 
   handleMouseUp() {
     this.setState({mouseIsPressed: false});
@@ -75,6 +78,8 @@ export default class PathfindingVisualizer extends Component {
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
+
+
 
   //Temp
   visualizeDFS() {
